@@ -5,6 +5,7 @@ import Signup from "./routes/Signup";
 import MyLibrary from "./routes/MyLibrary";
 import BookCalendar from "./routes/BookCalendar";
 import ServiceNavbar from "./components/ServiceNavbar";
+import Book from "./routes/Book";
 interface IRouterProps {}
 function Router({}: IRouterProps) {
   return (
@@ -16,6 +17,7 @@ function Router({}: IRouterProps) {
         <Route index element={<MyLibrary />} />
         <Route path="calendar" element={<BookCalendar />} />
       </Route>
+      <Route path="/book/:id" element={<Book />} />
       <Route path="*" element={<div>404</div>} />
     </Routes>
   );
