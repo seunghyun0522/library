@@ -19,7 +19,7 @@ const StyledNavItem = styled.li`
 const NavbarLink = styled(Link)`
   text-decoration: none;
   color: ${(props) => (props.id === "logout" ? "white" : "black")};
-  background: ${(props) => (props.id === "logout" ? "black" : "white")};
+  background: ${(props) => (props.id === "logout" ? "black" : "none")};
   padding: 10px 25px;
   border-radius: ${(props) => (props.id === "logout" ? "100px" : "0")};
 `;

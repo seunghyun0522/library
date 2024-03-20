@@ -30,7 +30,7 @@ const books: Book[] = [
     reviews: [
       {
         page: "37",
-        create_date: "2023.05.15",
+        create_date: "2024.03.18",
         content:
           "이 책을 읽고 수학을 2등급 받았습니다. 축구하고 점심시간에 읽고 배고픕니다. 이 책을 읽고 수학을 2등급 받았습니다. 축구하고 점심시간에 읽고 배고픕니다.이 책을 읽고 수학을 2등급 받았습니다. 축구하고 점심시간에 읽고 배고픕니다.이 책을 읽고 수학을 2등급 받았습니다. 축구하고 점심시간에 읽고 배고픕니다.오늘은 다함께 맥도날드를 먹는데 저는 2개 먹고 싶지만....",
       },
@@ -52,7 +52,7 @@ const books: Book[] = [
     reviews: [
       {
         page: "14",
-        create_date: "2023.03.12",
+        create_date: "2024.03.12",
         content:
           "이 책을 읽고 수학을 2등급 받았습니다. 축구하고 점심시간에 읽고 배고픕니다. 오늘은 다함께 맥도날드를 먹는데 저는 2개 먹고 싶지만....",
       },
@@ -248,9 +248,6 @@ function MyLibrary() {
           </Modal>
         </BookContent>
       ))}
-      {/* <FixedContent>
-        <MyResponsiveRadialBar />
-      </FixedContent> */}
     </>
   );
 }

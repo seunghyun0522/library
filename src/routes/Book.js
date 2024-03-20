@@ -33,7 +33,6 @@ function MyAlbum(props) {
   return (
     <body>
       <div className="bookSection">
-        <Link to=""></Link>
         <HTMLFlipBook
           width={550}
           height={650}
