@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
-import Book from "./Book";
+import Book from "../components/Book";
+import AddBook from "../components/AddBook";
 interface Review {
   page: string;
   create_date: string;
@@ -149,105 +150,178 @@ function MyLibrary() {
   const closeModal = () => {
     setModalIsOpen(false);
   };
+  const [addBook, addBookIsOpen] = useState(false);
 
+  const addBookOpenModal = () => {
+    addBookIsOpen(true);
+  };
+
+  const addBookCloseModal = () => {
+    addBookIsOpen(false);
+  };
   return (
     <>
-      {books.map((book, bookIndex) => (
-        <BookContent key={bookIndex}>
-          <BookInfo>
-            <BookTitle>{book.title}</BookTitle>
-            <BookInfoSection>
-              <BookAuthor>{book.author}</BookAuthor>
-            </BookInfoSection>
-            <div
-              style={{
-                display: "flex",
-                boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-                marginTop: "13px",
-                marginBottom: "17px",
-              }}
-            >
+      <div>
+        <Link to="/teamlibrary">
+          {" "}
+          <button style={{ width: "100px", padding: "10px" }}>
+            {" "}
+            팀서재 이동
+          </button>
+        </Link>
+
+        <button
+          onClick={addBookOpenModal}
+          style={{ width: "100px", padding: "10px" }}
+        >
+          책 추가
+        </button>
+
+        {books.map((book, bookIndex) => (
+          <BookContent key={bookIndex}>
+            <BookInfo>
+              <BookTitle>{book.title}</BookTitle>
+              <BookInfoSection>
+                <BookAuthor>{book.author}</BookAuthor>
+              </BookInfoSection>
               <div
                 style={{
-                  width: "106px",
-                  height: "33px",
-                  backgroundColor: "#F6f1dE",
+                  display: "flex",
+                  boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                  marginTop: "13px",
+                  marginBottom: "17px",
                 }}
               >
-                {book.percent}%
+                <div
+                  style={{
+                    width: "106px",
+                    height: "33px",
+                    backgroundColor: "#F6f1dE",
+                  }}
+                >
+                  {book.percent}%
+                </div>
+                <div
+                  style={{
+                    width: "200px",
+                    height: "33px",
+                    backgroundColor: "#D6BD97",
+                  }}
+                ></div>
               </div>
               <div
                 style={{
-                  width: "200px",
-                  height: "33px",
-                  backgroundColor: "#D6BD97",
+                  fontWeight: "600",
+                  fontStyle: "normal",
+                  marginBottom: "12px",
                 }}
-              ></div>
-            </div>
-            <div
-              style={{
-                fontWeight: "600",
-                fontStyle: "normal",
-                marginBottom: "12px",
-              }}
-            >
-              전체 리뷰
-            </div>
-            {book.reviews.map((review, reviewIndex) => (
-              <ReviewContent key={reviewIndex}>
-                <div
-                  style={{
-                    borderTop: " 1px solid #C3C3C3",
-                    paddingTop: "7px",
-                    color: "#868282",
-                    marginBottom: "15px",
-                  }}
-                >
-                  {review.page}p | {review.create_date} | 수정
-                </div>
-
-                <ReviewContentText
-                  expanded={expandedReviews[bookIndex][reviewIndex]}
-                  onClick={() => toggleReviewExpand(bookIndex, reviewIndex)}
-                  style={{ textDecoration: "none" }} // 추가된 부분
-                >
-                  {review.content}
-                </ReviewContentText>
-
-                <ToggleLikeMessage>
+              >
+                전체 리뷰
+              </div>
+              {book.reviews.map((review, reviewIndex) => (
+                <ReviewContent key={reviewIndex}>
                   <div
-                    onClick={() => toggleReviewExpand(bookIndex, reviewIndex)}
                     style={{
-                      cursor: "pointer",
-                      textDecoration: "none",
+                      borderTop: " 1px solid #C3C3C3",
+                      paddingTop: "7px",
+                      color: "#868282",
+                      marginBottom: "15px",
                     }}
                   >
-                    {expandedReviews[bookIndex][reviewIndex]
-                      ? "접기 ⬆️"
-                      : "펼치기 ⬇️"}
+                    {review.page}p | {review.create_date} | 수정
                   </div>
-                  {<div style={{ textAlign: "right" }}>👍 0 ✉️ 답글 0</div>}
-                </ToggleLikeMessage>
-              </ReviewContent>
-            ))}
-          </BookInfo>
 
-          <img
-            onClick={openModal}
-            src={book.img}
-            style={{
-              boxShadow: "8px 5px 10px 3px rgba(0,0,0,0.25)",
-              width: "300px",
-              cursor: "pointer",
-            }}
-          />
+                  <ReviewContentText
+                    expanded={expandedReviews[bookIndex][reviewIndex]}
+                    onClick={() => toggleReviewExpand(bookIndex, reviewIndex)}
+                    style={{ textDecoration: "none" }} // 추가된 부분
+                  >
+                    {review.content}
+                  </ReviewContentText>
 
-          <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-            <Book />
-            <button onClick={closeModal}>닫기</button>
-          </Modal>
-        </BookContent>
-      ))}
+                  <ToggleLikeMessage>
+                    <div
+                      onClick={() => toggleReviewExpand(bookIndex, reviewIndex)}
+                      style={{
+                        cursor: "pointer",
+                        textDecoration: "none",
+                      }}
+                    >
+                      {expandedReviews[bookIndex][reviewIndex]
+                        ? "접기 ⬆️"
+                        : "펼치기 ⬇️"}
+                    </div>
+                    {<div style={{ textAlign: "right" }}>👍 0 ✉️ 답글 0</div>}
+                  </ToggleLikeMessage>
+                </ReviewContent>
+              ))}
+            </BookInfo>
+
+            <img
+              onClick={openModal}
+              src={book.img}
+              style={{
+                boxShadow: "8px 5px 10px 3px rgba(0,0,0,0.25)",
+                width: "300px",
+                cursor: "pointer",
+              }}
+            />
+
+            <Modal
+              style={{
+                overlay: {
+                  position: "fixed",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  backgroundColor: "rgba(0, 0, 0, 0.3)", // Adjust the opacity of the shadow here
+                  zIndex: 1000,
+                },
+              }}
+              isOpen={modalIsOpen}
+              onRequestClose={closeModal}
+            >
+              <Book />
+              <button onClick={closeModal}>닫기</button>
+            </Modal>
+
+            <Modal
+              style={{
+                overlay: {
+                  position: "fixed",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  backgroundColor: "rgba(0, 0, 0, 0.3)", // Adjust the opacity of the shadow here
+                  zIndex: 1000,
+                },
+                content: {
+                  position: "absolute",
+                  width: "800px",
+                  height: "600px",
+                  top: "50%", // Center vertically
+                  left: "50%", // Center horizontally
+                  transform: "translate(-50%, -50%)", // Adjust to center modal exactly
+                  border: "1px solid #ccc",
+
+                  overflow: "auto",
+                  WebkitOverflowScrolling: "touch",
+                  borderRadius: "10px",
+                  outline: "none",
+                  padding: "20px",
+                },
+              }}
+              isOpen={addBook}
+              onRequestClose={addBookCloseModal}
+            >
+              <AddBook />
+              <button onClick={addBookCloseModal}>닫기</button>
+            </Modal>
+          </BookContent>
+        ))}
+      </div>
     </>
   );
 }

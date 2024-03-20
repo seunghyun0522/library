@@ -140,7 +140,7 @@ function Login() {
                 onChange={handlePasswordChange}
               />
 
-              <Link to="/library">
+              <Link to={`/${username}/library`}>
                 <LoginButton
                   onClick={handleLogin}
                   disabled={!username || !password}

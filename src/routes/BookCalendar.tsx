@@ -2,8 +2,8 @@ import { useState } from "react";
 import Calendar from "react-calendar";
 import Modal from "react-modal";
 import moment from "moment";
-import "./App.css";
-import Book from "./Book";
+import "../App.css";
+import Book from "../components/Book";
 type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
 interface Review {

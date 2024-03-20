@@ -1,6 +1,6 @@
 import HTMLFlipBook from "react-pageflip";
 import React, { useState } from "react";
-import "./App.css";
+import "../App.css";
 
 const PageCover = React.forwardRef((props, ref) => {
   return (
