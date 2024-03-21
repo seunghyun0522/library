@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import Book from "../components/Book";
 import AddBook from "../components/AddBook";
+import { BookCover } from "book-cover-3d";
 interface Review {
   page: string;
   create_date: string;
@@ -257,15 +258,18 @@ function MyLibrary() {
               ))}
             </BookInfo>
 
-            <img
-              onClick={openModal}
-              src={book.img}
-              style={{
-                boxShadow: "8px 5px 10px 3px rgba(0,0,0,0.25)",
-                width: "300px",
-                cursor: "pointer",
-              }}
-            />
+            <BookCover>
+              {" "}
+              <img
+                onClick={openModal}
+                src={book.img}
+                style={{
+                  boxShadow: "8px 5px 10px 3px rgba(0,0,0,0.25)",
+
+                  cursor: "pointer",
+                }}
+              />
+            </BookCover>
 
             <Modal
               style={{

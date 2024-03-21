@@ -1,14 +1,26 @@
 import HTMLFlipBook from "react-pageflip";
 import React, { useState } from "react";
 import "../App.css";
+import styled from "styled-components";
+
+const PageCoverContent = styled.div`
+  background-image: url(${(props) => props.backgroundImg});
+  background-size: cover;
+  background-position: center;
+`;
 
 const PageCover = React.forwardRef((props, ref) => {
   return (
-    <div className="cover" ref={ref} data-density="hard">
+    <PageCoverContent
+      className="cover"
+      ref={ref}
+      data-density="hard"
+      backgroundImg={props.backgroundImg}
+    >
       <div>
         <h2>{props.children}</h2>
       </div>
-    </div>
+    </PageCoverContent>
   );
 });
 
@@ -23,19 +35,12 @@ const Page = React.forwardRef((props, ref) => {
 });
 
 function MyAlbum(props) {
-  const [inputText, setInputElement] = useState("");
-  const [text, setText] = useState("입력한 것 넣을수도 있음");
-  const printText = () => {
-    setText(inputText);
-    setInputElement("");
-  };
-
   return (
     <body>
       <div className="bookSection">
         <HTMLFlipBook
-          width={550}
-          height={650}
+          width={350}
+          height={500}
           minWidth={315}
           maxWidth={1000}
           minHeight={420}
@@ -46,7 +51,7 @@ function MyAlbum(props) {
           maxShadowOpacity={0.5}
           className="album-web"
         >
-          <PageCover>책 표지</PageCover>
+          <PageCover backgroundImg="https://image.aladin.co.kr/product/28258/73/cover500/k212835380_1.jpg"></PageCover>
           <PageCover>목차가 들어갈 곳</PageCover>
 
           <Page number="1">
@@ -58,7 +63,6 @@ function MyAlbum(props) {
           </Page>
           <Page number="2">
             <hr></hr>
-            <p>{text}</p>
             “Whenever you feel like criticizing any one,” he told me, “just
             remember that all the people in this world haven’t had the
             advantages that you’ve had.”
@@ -92,7 +96,6 @@ function MyAlbum(props) {
         </HTMLFlipBook>
         <br></br>
         <br></br>
-        <div className="formContainer"></div>
       </div>
     </body>
   );

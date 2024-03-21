@@ -6,7 +6,7 @@ import MyLibrary from "./routes/MyLibrary";
 import BookCalendar from "./routes/BookCalendar";
 import ServiceNavbar from "./components/ServiceNavbar";
 import Book from "./components/Book";
-import TeamLibrary from "./routes/TeamLibrary";
+import TeamLibrary from "./routes/TeamLibrary.js";
 import MyPage from "./routes/MyPage";
 interface IRouterProps {}
 function Router({}: IRouterProps) {

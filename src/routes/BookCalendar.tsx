@@ -4,6 +4,7 @@ import Modal from "react-modal";
 import moment from "moment";
 import "../App.css";
 import Book from "../components/Book";
+import { BookCover } from "book-cover-3d";
 type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
 interface Review {
