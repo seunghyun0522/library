@@ -86,7 +86,7 @@ function Signup() {
     if (data.password !== data.password1) {
       setError(
         "password1",
-        { message: "Password are not the same!" },
+        { message: "Password are not the same!!!" },
         { shouldFocus: true }
       );
     } else {
