@@ -12,7 +12,6 @@ const PageCoverContent = styled.div`
 const PageCover = React.forwardRef((props, ref) => {
   return (
     <PageCoverContent
-      className="cover"
       ref={ref}
       data-density="hard"
       backgroundImg={props.backgroundImg}
@@ -85,8 +84,8 @@ function MyAlbum(props) {
             express them, are usually plagiaristic and marred by obvious
             suppressions. Reserving judgments is a matter of infinite hope. I am
             still a little afraid of missing something if I forget that, as my
-            father snobbishly suggested, and I snobbishly repeat, a sense of the
-            fundamental decencies is parcelled out unequally at birth.
+            father snobbishly suggested, an d I snobbishly repeat, a sense of
+            the fundamental decencies is parcelled out unequally at birth.
           </Page>
           <Page number="4">
             <hr></hr>
